@@ -1,0 +1,36 @@
+{
+  "name": "node-fizzbuzz",
+  "version": "1.0.0",
+  "description": "Simple fizzbuzz",
+  "main": "server.js",
+  "scripts": {
+    "start": "babel-node --presets es2015,env server.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josmo/node-fizzbuzz.git"
+  },
+  "author": "Joachim Hill-Grannec <joachim.hill@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josmo/node-fizzbuzz/issues"
+  },
+  "homepage": "https://github.com/josmo/node-fizzbuzz#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "config": "^1.30.0",
+    "express": "^4.16.3",
+    "js-yaml": "^3.12.0",
+    "mocha": "^5.2.0",
+    "npm": "^6.1.0",
+    "supertest": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}

@@ -1,0 +1,28 @@
+pipeline:
+  npm_install:
+    image: node:10.2.1
+    commands:
+      - env
+      - yarn
+      - yarn test
+  publish:
+    image: plugins/docker
+    username: josmo
+    secrets: [ docker_password ]
+    repo: josmo/node-fizzbuzz
+    auto_tag: true
+    file: Dockerfile
+    when:
+      event: [ push, tag ]
+
+  deploy:
+    image: peloton/drone-k8s-deployment
+    pull: true
+    secrets: [ kubernetes_token, kubernetes_url ]
+    namespaces: josmo
+    deployment_names: node-fizzbuzz
+    docker_image: "josmo/node-fizzbuzz:${DRONE_TAG}"
+    container_names: node-fizzbuzz
+    when:
+      event: [ tag ]
+      branch: [ master ]
