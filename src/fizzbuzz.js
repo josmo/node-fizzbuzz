@@ -3,12 +3,14 @@ export function convertFizzBuzz(toBeConverted) {
 
   let split = toBeConverted.split(" ");
   const returnValue = split
-    .map(value => (value.indexOf("3") >= 0) ? "lucky": value) //Contains 3 should be lucky
-    .map(value => (value %15 === 0) ? "fizzbuzz": value) //Map values %15 to fizzbuzz -- needs to be first
-    .map(value => (value %3 === 0) ? "fizz" : value)  // Map values % 3 to fizz
-    .map(value => (value %5 === 0) ? "buzz" : value) // Map values % 5 to buzz
+    .map(value => {
+      if (value.indexOf("3") >= 0) return "lucky"; //contains 3 return lucky
+      if (value %15 === 0) return "fizzbuzz"; // Modulus 15 return fizzbuzz
+      if (value %3 === 0) return "fizz"; //Modulus 3 return fizz
+      if (value %5 === 0) return "buzz"; //Modulus 5 return buzz
+      return value;
+    })
     .join(" ");
-
   return returnValue;
 };
 
@@ -19,23 +21,23 @@ export function summary(toBeSummarized) {
     .reduce((acc, curr) => {
       switch (curr) {
         case "fizz":
-          acc["fizz"] = acc["fizz"]+1;
+          acc["fizz"]++;
           break;
         case "buzz":
-          acc["buzz"] = acc["buzz"]+1;
+          acc["buzz"]++;
           break;
         case "fizzbuzz":
-          acc["fizzbuzz"] = acc["fizzbuzz"]+1;
+          acc["fizzbuzz"]++;
           break;
         case "lucky":
-          acc["lucky"] = acc["lucky"]+1;
+          acc["lucky"]++;
           break;
         default:
-          acc["integer"] = acc["integer"]+1;
+          acc["integer"]++;
           break;
       }
       return acc;
 
-    }, {"fizz": 0, "buzz": 0, "fizzbuzz": 0, "lucky": 0, "integer": 0})
+    }, {"fizz": 0, "buzz": 0, "fizzbuzz": 0, "lucky": 0, "integer": 0});
   return returnValue;
 }

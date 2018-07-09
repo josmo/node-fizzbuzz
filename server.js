@@ -21,6 +21,6 @@ router.post('/convert', (req, res) => {
   console.log(`Processing ${req.body}`);
   const converted = convertFizzBuzz(req.body.convert);
   const convertedSummary = summary(converted);
-  res.send(converted + " " + JSON.stringify(convertedSummary));
+  res.json({converted, convertedSummary});
 });
 
