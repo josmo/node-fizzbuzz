@@ -11,3 +11,31 @@ export function convertFizzBuzz(toBeConverted) {
 
   return returnValue;
 };
+
+export function summary(toBeSummarized) {
+  console.log(`${toBeSummarized} should be summarized `);
+  let split = toBeSummarized.split(" ");
+  const returnValue = split
+    .reduce((acc, curr) => {
+      switch (curr) {
+        case "fizz":
+          acc["fizz"] = acc["fizz"]+1;
+          break;
+        case "buzz":
+          acc["buzz"] = acc["buzz"]+1;
+          break;
+        case "fizzbuzz":
+          acc["fizzbuzz"] = acc["fizzbuzz"]+1;
+          break;
+        case "lucky":
+          acc["lucky"] = acc["lucky"]+1;
+          break;
+        default:
+          acc["integer"] = acc["integer"]+1;
+          break;
+      }
+      return acc;
+
+    }, {"fizz": 0, "buzz": 0, "fizzbuzz": 0, "lucky": 0, "integer": 0})
+  return returnValue;
+}

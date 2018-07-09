@@ -1,6 +1,6 @@
 import express from 'express';
 import config from 'config'
-import {convertFizzBuzz} from './src/fizzbuzz';
+import {convertFizzBuzz,summary} from './src/fizzbuzz';
 const router = express.Router();
 const app = express();
 const appPort = config.get('service.port');
@@ -19,6 +19,8 @@ router.get('/healthcheck', (req, res) => {
 
 router.post('/convert', (req, res) => {
   console.log(`Processing ${req.body}`);
-  res.send(convertFizzBuzz(req.body.convert));
+  const converted = convertFizzBuzz(req.body.convert);
+  const convertedSummary = summary(converted);
+  res.send(converted + " " + JSON.stringify(convertedSummary));
 });
 
