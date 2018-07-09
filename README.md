@@ -1,4 +1,4 @@
-# node-fizzbuz(z)
+# node-fizzbuz(z) 
 
 
 ## Info
@@ -21,3 +21,6 @@ Deployed on k8s, with nginx ingress and uses letsencrypt for ssl
 ### Extra
 
 [.drone.yml](.drone.yml) for the build info. Currently builds, publishes, and deploys tags to k8s 
+
+
+###925cf7f189d1e404cfd55df6e8398d831df0f45a
